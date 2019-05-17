@@ -22,11 +22,11 @@ class BukuController extends Controller
 
         $data->id = $request->input('id');
         $data->judul = $request->input('judul');
-        $data->judul = $request->input('gambar');
-        $data->judul = $request->input('penulis');
-        $data->judul = $request->input('tahun');
-        $data->judul = $request->input('penerbit');
-        $data->judul = $request->input('kategori');
+        $data->gambar = $request->input('gambar');
+        $data->penulis = $request->input('penulis');
+        $data->tahun = $request->input('tahun');
+        $data->penerbit = $request->input('penerbit');
+        $data->kategori = $request->input('kategori');
 
         if($data->save()){
             return new BukuResource($data);
@@ -52,5 +52,12 @@ class BukuController extends Controller
         if($data->delete()){
             return new BukuResource($data);
         }
+    }
+    public function getData(Request $request){
+        $list = [];
+        if($request->input('judul') !=null)  {
+            $list = Buku::where('judul','like','%'.$request->input('judul').'%')->get();
+        }  
+        return response()->json($list);
     }
 }

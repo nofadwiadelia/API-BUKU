@@ -1,126 +1,118 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- My Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
-
-    <!-- My CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-
-    <title>BooFind</title>
-
-    <!--     Fonts and icons     -->
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <!-- CSS Files -->
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    </head>
-    <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="container">
-        <a class="navbar-brand" href="#">BooFind</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <li class="nav-item">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                  {{ Auth::user()->name }}
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                      onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
-                  </a>
-
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                  </form>
-                </div>
-
-              </li>
-        </div>
-        </div>
-    </div>
-    </nav>
-    <!-- End Navbar -->
-
-    <!-- Jumbotron -->
-    <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Get work done <span>faster</span><br> and <span>with</span> us </h1>
-    </div>
-    </div>
-    <!-- End Jumbotron -->
-
-    <!-- Container -->
-    <div class="container">
-
-    <!-- Info Panel -->
+@section('content')
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-10 info-panel">
-        
-            <!-- Search form -->
-            <form class="form-inline md-form form-sm active-cyan active-cyan-2 mt-2">
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
-            </form>
-        
-        </div>
-    </div>
-    <!-- End Info Panel -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Input Data</div>
 
-    <!-- Card -->
-    <div class="row workingspace">
-        <div class="card" style="width: 18rem;">
-            <img src="http://gpu.id/assets/images/uploads/dirimg_buku/cover_buku_90475.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Detail</a>
+                <div class="card-body">
+                    @if (session('status'))     
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <form class="form-horizontal" action="" role="form">
+                    {{ csrf_field() }}
+
+                        <div class="form-group row">
+                            <label for="judul" class="col-md-4 col-form-label text-md-right">Judul</label>
+
+                            <div class="col-md-6">
+                                <input id="judul" type="text" class="form-control" name="judul">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="gambar" class="col-md-4 col-form-label text-md-right">Gambar</label>
+
+                            <div class="col-md-6">
+                                <input id="gambar" type="text" class="form-control" name="gambar">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="penulis" class="col-md-4 col-form-label text-md-right">Penulis</label>
+
+                            <div class="col-md-6">
+                                <input id="penulis" type="text" class="form-control" name="penulis">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tahun" class="col-md-4 col-form-label text-md-right">Tahun</label>
+
+                            <div class="col-md-6">
+                                <input id="tahun" type="text" class="form-control" name="tahun" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="penerbit" class="col-md-4 col-form-label text-md-right">Penerbit</label>
+
+                            <div class="col-md-6">
+                                <input id="penerbit" type="text" class="form-control" name="penerbit" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="kategori" class="col-md-4 col-form-label text-md-right">Kategori</label>
+
+                            <div class="col-md-6">
+                                <input id="kategori" type="text" class="form-control" name="kategori" >
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button id="btnpost" type="submit" class="btn btn-primary">
+                                    POST
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Card -->
+</div>
+@endsection
 
-    <!-- Working Space -->
-    <!-- <div class="row workingspace">
-        <div class="col-lg-6">
-        <img src="img/workingspace.png" alt="workingspace" class="img-fluid">
-        </div>
-    </div> -->
-    <!-- End Working Space -->
+@section('scripts')
+    
+    <script type="text/javascript">
+    $(document).on('click', '#btnpost', function(event){
+            alert('Yakin ingin menambah data?');
+            event.preventDefault();
+            $.ajax({
+                    url: 'http://localhost:8000/api/buku',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        "judul": $('#judul').val(),
+                        "gambar": $('#gambar').val(),
+                        "penulis": $('#penulis').val(),
+                        "tahun": $('#tahun').val(),
+                        "penerbit": $('#penerbit').val(),
+                        "kategori": $('#kategori').val(),
+                    },
+                    headers: {
+                        Authorization : 'Bearer {{Auth::user()->api_token}}',
+                    },
+                    succes: function(data){
+                        console.info(data);
+                        alert('Data Ditambahkan');
+                        $('#judul').val("");
+                        $('#gambar').val("");
+                        $('#penulis').val("");
+                        $('#tahun').val("");
+                        $('#penerbit').val("");
+                        $('#kategori').val("");
+                    }
+                });
+        });
+    
+    </script>
 
-    <!-- Footer -->
-    <div class="row footer">
-        <div class="col text-center">
-        <p>2019 All Rights Reserved by BooFind</p>
-        </div>
-    </div>
-    <!-- End Footer -->
+@endsection
 
-
-    </div>
-    <!-- End Container -->
-
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </body>
-</html>
