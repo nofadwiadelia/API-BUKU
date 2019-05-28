@@ -21,6 +21,11 @@
     <!-- CSS Files -->
     <!-- CSS Just for demo purpose, don't include it in your project -->
     </head>
+    <style>
+    p{
+        text-align: center;
+    }
+    </style>
     <body>
 
     <!-- Navbar -->
@@ -76,11 +81,12 @@
     <!-- End Info Panel -->
 
     <!-- List DATA BUKU -->
-    <div class="row workingspace">
+    <!-- <div class="row workingspace"> -->
+    <br/>
     <div id="list">
     
     </div>
-    </div>
+    <!-- </div> -->
 
     <!-- Card -->
     <!-- <div class="row workingspace">
@@ -128,7 +134,7 @@
                 console.info(data);
                 $('#list').empty();
                 $.each(data, function(key, value){
-                $('#list').append('<p>'+"Judul : "+value['judul']+'<br/>'+"Penulis : "+value['penulis']+'<br/>'+"Tahun : "+value['tahun']+'<br/>'+"Penerbit : "+value['penerbit']+"Kategori : "+value['kattegori']+'<br/>'+'<br/>'+'</p>')
+                $('#list').append('<p>'+"Judul : "+value['judul']+'<br/>'+"Penulis : "+value['penulis']+'<br/>'+"Tahun : "+value['tahun']+'<br/>'+"Penerbit : "+value['penerbit']+"Kategori : "+value['kattegori']+'</p>'+'<p>'+'<img src="'+value['gambar']+'" style="width:210px; height:300px;" />'+'</p>'+'<p>'+'<br/>'+'<br/>'+'</p>')
                 
               })
             }
