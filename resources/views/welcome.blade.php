@@ -38,17 +38,6 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            @if (Route::has('login'))
-                    @auth
-                        <!-- <a href="{{ url('/home') }}">Home</a> -->
-                    @else
-                        <a class="nav-item nav-link active" href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a class="nav-item nav-link active"href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-            @endif
         </div>
         </div>
     </div>
@@ -81,12 +70,10 @@
     <!-- End Info Panel -->
 
     <!-- List DATA BUKU -->
-    <!-- <div class="row workingspace"> -->
     <br/>
     <div id="list">
     
     </div>
-    <!-- </div> -->
 
     <!-- Card -->
     <!-- <div class="row workingspace">
