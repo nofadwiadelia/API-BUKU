@@ -121,7 +121,7 @@
                 console.info(data);
                 $('#list').empty();
                 $.each(data, function(key, value){
-                $('#list').append('<p>'+"Judul : "+value['judul']+'<br/>'+"Penulis : "+value['penulis']+'<br/>'+"Tahun : "+value['tahun']+'<br/>'+"Penerbit : "+value['penerbit']+"Kategori : "+value['kattegori']+'</p>'+'<p>'+'<img src="'+value['gambar']+'" style="width:210px; height:300px;" />'+'</p>'+'<p>'+'<br/>'+'<br/>'+'</p>')
+                $('#list').append('<p>'+"Judul : "+value['judul']+'<br/>'+"Penulis : "+value['penulis']+'<br/>'+"Tahun : "+value['tahun']+'<br/>'+"Penerbit : "+value['penerbit']+'<br/>'+"Kategori : "+value['kategori']+'</p>'+'<p>'+'<img src="'+value['gambar']+'" style="width:210px; height:300px;" />'+'</p>'+'<p>'+'<br/>'+'<br/>'+'</p>')
                 
               })
             }
